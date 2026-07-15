@@ -1,0 +1,1143 @@
+/* ==========================================================================
+   1. VARIABLES & RESET
+   ========================================================================== */
+:root {
+    --bg-color: #080808;
+    --second-bg-color: #131313;
+    --text-color: #ffffff;
+    --main-color: #00db57;
+    --main-color-hover: #00cc52;
+    --card-bg: #1a1a1a;
+    --border-color: #333333;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+    /* Defines 1rem = 10px for clean mathematical scaling */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. REUSABLE COMPONENTS & LAYOUTS
+   ========================================================================== */
+section {
+    min-height: 100vh;
+    padding: 10rem 9% 6rem 9%;
+    /* Fixed static padding for desktop */
+}
+
+.heading {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 5rem;
+}
+
+.heading span {
+    color: var(--main-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background-color: var(--main-color);
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: var(--bg-color);
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: var(--main-color-hover);
+    box-shadow: 0 0 1rem var(--main-color);
+}
+
+/* ==========================================================================
+   3. HEADER & NAVIGATION
+   ========================================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%;
+    background-color: rgba(8, 8, 8, 0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.logo span {
+    color: var(--main-color);
+}
+
+.navbar a {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    transition: 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+}
+
+#menu {
+    font-size: 3rem;
+    color: var(--text-color);
+    cursor: pointer;
+    display: none;
+}
+
+/* ==========================================================================
+   4. HOME SECTION
+   ========================================================================== */
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    background-color: var(--bg-color);
+}
+
+.home-content {
+    flex: 1;
+}
+
+.home-content h1 {
+    font-size: 5.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+.availability {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 1rem;
+
+    margin: 1rem 0 2rem;
+
+    padding: 1rem 1.8rem;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 999px;
+
+    background-color: var(--card-bg);
+
+    color: var(--text-muted);
+
+    font-size: 1.5rem;
+
+    font-weight: 500;
+
+}
+
+.availability i {
+
+    color: var(--main-color);
+
+    font-size: 1.4rem;
+
+}
+.home-content h1 span {
+    color: var(--main-color);
+}
+
+/* Restored styling for your dynamic typing subtitle original design */
+.home-content h3 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.home-content h3 span {
+    color: var(--main-color);
+}
+
+.text-animation {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.text-animation span {
+    position: relative;
+    color: var(--main-color);
+}
+
+/* The word switcher */
+.text-animation span::before {
+    content: "Penteration Tester";
+    animation: words 15s infinite;
+}
+
+/* The smooth sliding overlay block + typing cursor */
+.text-animation span::after {
+    content: "";
+    position: absolute;
+    right: -8px;
+    width: calc(100% + 8px);
+    height: 100%;
+    background-color: var(--bg-color);
+    border-left: 3px solid var(--main-color);
+    /* Lower step count makes the tick transitions look snappy and deliberate instead of dragging */
+    animation:
+        cursor 0.7s steps(2) infinite,
+        step-type 15s steps(18) infinite;
+}
+
+@keyframes step-type {
+    0% {
+        width: calc(100% + 8px);
+    }
+
+    5%,
+    25% {
+        width: 0;
+    }
+
+    30% {
+        width: calc(100% + 8px);
+    }
+
+    33% {
+        width: calc(100% + 8px);
+    }
+
+    38%,
+    58% {
+        width: 0;
+    }
+
+    63% {
+        width: calc(100% + 8px);
+    }
+
+    66% {
+        width: calc(100% + 8px);
+    }
+
+    71%,
+    91% {
+        width: 0;
+    }
+
+    96%,
+    100% {
+        width: calc(100% + 8px);
+    }
+}
+
+/* 1. Cycle through words cleanly */
+@keyframes words {
+
+    0%,
+    30% {
+        content: "Penteration Tester";
+    }
+
+    33%,
+    63% {
+        content: "Security Researcher";
+    }
+
+    66%,
+    96% {
+        content: "Bug Hunter";
+    }
+}
+
+/* 2. Super smooth hardware-accelerated slide action (uses transform instead of width) */
+@keyframes smooth-type {
+
+    /* Word 1: Pentester */
+    0% {
+        transform: translateX(0);
+    }
+
+    5%,
+    25% {
+        transform: translateX(105%);
+    }
+
+    /* slide open (reveal text) */
+    30% {
+        transform: translateX(0);
+    }
+
+    /* slide closed (hide text) */
+
+    /* Word 2: Security Researcher */
+    33% {
+        transform: translateX(0);
+    }
+
+    38%,
+    58% {
+        transform: translateX(105%);
+    }
+
+    63% {
+        transform: translateX(0);
+    }
+
+    /* Word 3: Bug Hunter */
+    66% {
+        transform: translateX(0);
+    }
+
+    71%,
+    91% {
+        transform: translateX(105%);
+    }
+
+    96%,
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* 3. Blinking cursor */
+@keyframes cursor {
+    50% {
+        border-color: transparent;
+    }
+}
+
+.home-content p {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.social-icons a,
+.social-icons svg {
+    width: 4.5rem;
+    height: 4.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: 0.1rem solid var(--main-color);
+    border-radius: 50%;
+    font-size: 2.2rem;
+    color: var(--main-color);
+    transition: 0.3s ease;
+}
+
+.social-icons a:hover,
+.social-icons svg:hover {
+    background-color: var(--main-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 1.5rem var(--main-color);
+}
+
+.social-icons svg {
+    padding: 0.8rem;
+}
+
+.inside-svg {
+    border: none !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.btn-group {
+    display: flex;
+    gap: 2.5rem;
+}
+
+/* Controlled and responsive profile image constraints */
+.home-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-img img {
+    width: 100%;
+    max-width: 350px;
+    /* Fixed ideal max size for high resolutions */
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 2.5rem var(--main-color);
+    transition: 0.4s ease;
+}
+
+.home-img img:hover {
+    box-shadow: 0 0 5rem var(--main-color);
+}
+
+/* ==========================================================================
+   5. SECURITY IN NUMBERS (STATS)
+   ========================================================================== */
+.stats {
+    background-color: var(--second-bg-color);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 3rem;
+}
+
+.stats-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 3.5rem 2.5rem;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.stats-card:hover {
+    border-color: var(--main-color);
+    transform: translateY(-5px);
+}
+
+.stats-card span {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--main-color);
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+.stats-card h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.stats-card p {
+    font-size: 1.4rem;
+    color: #b3b3b3;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   6. CURRENT FOCUS (SKILLS)
+   ========================================================================== */
+.focus {
+    background-color: var(--bg-color);
+}
+
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+}
+
+.focus-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 4rem 3rem;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.focus-card:hover {
+    border-color: var(--main-color);
+    transform: translateY(-5px);
+}
+
+.focus-status {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    background-color: rgba(0, 255, 102, 0.1);
+    color: var(--main-color);
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.focus-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.focus-header i {
+    font-size: 2.5rem;
+    color: var(--main-color);
+}
+
+.focus-header span {
+    font-size: 1.4rem;
+    color: #888888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.focus-card h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.focus-card p {
+    font-size: 1.4rem;
+    color: #b3b3b3;
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   7. ARSENAL SECTION
+   ========================================================================== */
+.arsenal {
+
+    background-color: var(--bg-color);
+
+}
+
+.arsenal-container {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3rem;
+
+}
+
+.arsenal-category {
+
+    background-color: var(--second-bg-color);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 3rem;
+
+    transition: .3s ease;
+
+}
+
+.arsenal-category:hover {
+
+    border-color: var(--main-color);
+
+    box-shadow: 0 0 25px rgba(35, 134, 54, .12);
+
+}
+
+.arsenal-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 1.5rem;
+
+    margin-bottom: 2.5rem;
+
+}
+
+.arsenal-title i {
+
+    color: var(--main-color);
+
+    font-size: 2.4rem;
+
+}
+
+.arsenal-title h2 {
+
+    font-size: 2.5rem;
+
+}
+
+.arsenal-grid {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 1.2rem;
+
+}
+
+.tool {
+
+    padding: 1.2rem 2rem;
+
+    background-color: var(--bg-color);
+
+    border: 1px solid var(--border);
+
+    border-radius: 999px;
+
+    font-size: 1.5rem;
+
+    color: var(--text-main);
+
+    transition: .25s ease;
+
+}
+
+.tool:hover {
+
+    color: white;
+
+    border-color: var(--main-color);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 0 15px rgba(35, 134, 54, .18);
+
+}
+
+/* ==========================================================================
+   8. PROJECTS SECTION
+   ========================================================================== */
+.projects {
+    background-color: var(--bg-color);
+}
+
+.category-title {
+    font-size: 2.4rem;
+    margin: 4rem 0 2rem 0;
+    border-left: 4px solid var(--main-color);
+    padding-left: 1.5rem;
+}
+
+.writeups-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.terminal-card {
+    background-color: #0d0d0d;
+    border: 1px solid var(--border-color);
+    border-radius: 0.8rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s ease;
+}
+
+.section-subtitle {
+
+    max-width: 800px;
+
+    margin: -4rem auto 5rem auto;
+
+    text-align: center;
+
+    font-size: 1.7rem;
+
+    line-height: 1.8;
+
+    color: var(--text-muted);
+
+}
+
+.terminal-card:hover {
+    border-color: var(--main-color);
+    transform: translateY(-5px);
+}
+
+.terminal-header {
+    background-color: #1a1a1a;
+    padding: 1.2rem 2rem;
+    font-family: 'Courier New', monospace;
+    font-size: 1.3rem;
+    color: #888888;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.terminal-body {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.terminal-body h3 {
+    font-size: 2.2rem;
+    color: var(--main-color);
+    margin-bottom: 1.5rem;
+}
+
+.terminal-body p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.terminal-body strong {
+    color: #e0e0e0;
+}
+
+.view-report {
+    margin-top: auto;
+    font-size: 1.4rem;
+    color: var(--main-color);
+    font-weight: 600;
+    display: inline-block;
+    transition: 0.3s ease;
+}
+
+.view-report:hover {
+    text-shadow: 0 0 0.8rem var(--main-color);
+    transform: translateX(5px);
+}
+
+.repo-link {
+    display: inline-block;
+    font-size: 1.8rem;
+    color: var(--main-color);
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: 0.3s;
+}
+
+.repo-link:hover {
+    transform: translateX(10px);
+}
+
+/* ==========================================================================
+   9. METHODOLOGY & TIMELINE (JOURNEY)
+   ========================================================================== */
+.workflow {
+    background-color: var(--second-bg-color);
+    text-align: center;
+}
+
+/* Redesigned Workflow Terminal to fill space properly and look like a real GUI Terminal */
+.workflow-terminal {
+    background-color: #0d0d0d;
+    border: 1px solid var(--border-color);
+    border-radius: 0.8rem;
+    width: 100%;
+    max-width: 800px;
+    /* Takes up proper desktop screen presence */
+    margin: 0 auto;
+    position: relative;
+    padding: 5.5rem 4rem 4rem 4rem;
+    /* Top padding reserved for pseudo top-bar */
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+    overflow-x: auto;
+}
+
+/* Generated MacOS/Linux style mock window header controls */
+.workflow-terminal::before {
+    content: "● ● ●  methodology.sh";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3.8rem;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid var(--border-color);
+    color: #888888;
+    font-family: 'Courier New', monospace;
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    letter-spacing: 0.2rem;
+    text-align: left;
+}
+
+.workflow-terminal pre {
+    font-family: 'Courier New', monospace;
+    font-size: 1.7rem;
+    /* Increased readability size to fill vertical volume */
+    color: var(--main-color);
+    line-height: 1.8;
+    /* Expands terminal footprint vertically */
+    text-align: left;
+    white-space: pre;
+}
+
+.journey {
+    background-color: var(--bg-color);
+}
+
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 3rem;
+    border-left: 2px solid var(--border-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 5rem;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-year {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--main-color);
+    margin-bottom: 1rem;
+}
+
+.timeline-content {
+    background-color: var(--second-bg-color);
+    border: 1px solid var(--border-color);
+    padding: 2.5rem;
+    border-radius: 0.8rem;
+}
+
+.timeline-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.timeline-content p {
+    font-size: 1.4rem;
+    color: #b3b3b3;
+    line-height: 1.6;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: calc(-3rem - 8px);
+    top: 0.5rem;
+    width: 14px;
+    height: 14px;
+    background-color: var(--main-color);
+    border-radius: 50%;
+    box-shadow: 0 0 1rem var(--main-color);
+}
+
+/* ==========================================================================
+   10. CONTACT & FOOTER
+   ========================================================================== */
+.contact {
+    background-color: var(--second-bg-color);
+}
+
+.contact-flex {
+    display: flex;
+    justify-content: center;
+}
+
+.info {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.info li {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    font-size: 1.8rem;
+}
+
+/* Base envelope icon on the left */
+.info li > i.fa-envelope {
+    font-size: 2.4rem;
+    color: var(--main-color);
+}
+
+.email-link {
+    color: var(--text-color);
+    transition: 0.3s;
+}
+
+.email-link:hover {
+    color: var(--main-color);
+}
+
+/* Container-level adjustment for the action icons on the right */
+.contact-action {
+    color: #888888 !important; /* Matches your current icon-neutral style */
+    font-size: 1.8rem !important;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Push the first action icon to the right side, but keep them close together */
+a.contact-action {
+    margin-left: auto;
+    margin-right: 1.5rem; /* Drastically lowers the spacing between the two icons */
+}
+
+/* Hover effects for both action buttons (paper-plane and copy) */
+.contact-action:hover,
+#copy-icon:hover {
+    color: var(--main-color) !important;
+    text-shadow: 0 0 0.8rem var(--main-color);
+    transform: scale(1.1);
+}
+
+/* Keeps the copy icon in line with the action classes */
+#copy-icon {
+    font-size: 1.8rem;
+    color: #888888;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Styling for the copy success checkmark state */
+#copy-icon.fa-check , i.fa-mobile-button{
+    color: var(--main-color) !important;
+}
+
+.phone {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+footer {
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    padding: 3rem;
+    font-size: 1.6rem;
+}
+
+footer span {
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   11. RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================================================== */
+
+/* Large Desktop screens */
+@media (max-width: 1200px) {
+    html {
+        font-size: 55%;
+        /* Scaled down layout dynamically */
+    }
+}
+
+/* Medium Tablets & iPads */
+@media (max-width: 991px) {
+    header {
+        padding: 2rem 4%;
+    }
+
+    section {
+        padding: 8rem 4% 6rem 4%;
+        /* Scaled down static padding */
+    }
+
+    .home {
+        flex-direction: column-reverse;
+        gap: 4rem;
+        text-align: center;
+        padding-top: 90px;
+    }
+
+    .home-content h1 {
+        font-size: 4.8rem;
+    }
+
+    .home-content h3 {
+        font-size: 2.8rem;
+    }
+
+    .home-img img {
+        max-width: 300px;
+        /* Slight scaling drop for tablets */
+    }
+
+    .social-icons,
+    .btn-group {
+        justify-content: center;
+    }
+}
+@media (max-width: 768px) {
+
+    .section-subtitle {
+
+        margin: -3rem auto 4rem auto;
+
+        font-size: 1.5rem;
+
+        padding: 0 1rem;
+
+    }
+
+    .availability {
+
+        justify-content: center;
+
+        width: 100%;
+
+        font-size: 1.3rem;
+
+        padding: 1rem;
+
+        text-align: center;
+
+    }
+
+}
+/* Small Tablets & Mobile Menu Trigger */
+@media (max-width: 768px) {
+    #menu {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 2rem 4%;
+        background-color: rgba(8, 8, 8, 0.95);
+        border-bottom: 1px solid var(--border-color);
+        display: none;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .navbar.mobile {
+        display: flex;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 2rem;
+        margin-left: 0;
+        padding: 1rem 0;
+    }
+
+    .heading {
+        font-size: 2.6rem;
+        margin-bottom: 4rem;
+    }
+
+    .home-img img {
+        max-width: 250px;
+    }
+}
+
+/* Phones & Very Small Screens */
+@media (max-width: 480px) {
+    html {
+        font-size: 50%;
+        /* Further scales down base typography to ensure mobile fitness */
+    }
+
+    .home-img img {
+        max-width: 220px;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .writeups-grid,
+    .stats-grid,
+    .focus-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .terminal-body,
+    .focus-card {
+        padding: 2rem;
+    }
+
+    .info li {
+        padding: 1.5rem;
+        font-size: 1.6rem;
+    }
+
+    .timeline {
+        padding-left: 2rem;
+    }
+
+    .timeline-item::before {
+        left: calc(-2rem - 8px);
+    }
+}
+
+/* Medium Tablets & iPads (max-width: 991px) */
+@media (max-width: 991px) {
+    /* ... previous home and layout updates ... */
+
+    .workflow-terminal pre {
+        font-size: 1.6rem;
+        line-height: 1.7;
+    }
+}
+
+/* Small Tablets & Mobile Menu Trigger (max-width: 768px) */
+@media (max-width: 768px) {
+    /* ... previous navbar updates ... */
+
+    .workflow-terminal {
+        padding: 5rem 2.5rem 2.5rem 2.5rem;
+    }
+
+    .workflow-terminal pre {
+        font-size: 1.4rem;
+        line-height: 1.6;
+    }
+}
